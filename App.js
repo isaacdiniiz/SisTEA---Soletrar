@@ -11,8 +11,8 @@ export default function App() {
  return (
     <View style={styles.container}>
       <Image source={imagecat} style={styles.image}/>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Soletrar</Text>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>Soletrar</Text>
       </View>
     </View>
  );
@@ -30,17 +30,14 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     marginTop: 50
  },
- header: {
-    backgroundColor: '#495E88',
-    width: 360,
-    height: 30,
-    flexShrink: 0,
- },
- headerText: {
-    fontFamily: 'inter',
-    fontSize: 24,
-    fontStyle: 'normal',
-    fontWeight: 700,
-    lineHeight: 24,
- }
+ footer: {
+  backgroundColor: 'rgba(73,	140,	255, 1)',
+  padding: 10,
+  marginTop: 20,
+},
+ footerText: {
+  fontSize: 16, // Set the font size of the footer text
+  color: 'white', // Set the color of the footer text
+  textAlign: 'center', // Center the footer text horizontally
+},
 })
