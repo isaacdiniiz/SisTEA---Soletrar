@@ -10,10 +10,10 @@ export default function App() {
  // Return the JSX for the App component
  return (
     <View style={styles.container}>
+      <Image source={imagecat} style={styles.image}/>
       <View style={styles.header}>
         <Text style={styles.headerText}>Soletrar</Text>
       </View>
-      <Image source={imagecat} style={styles.image}/>
     </View>
  );
 }
@@ -37,13 +37,10 @@ const styles = StyleSheet.create({
     flexShrink: 0,
  },
  headerText: {
-    flex: 1,
-    color: '#FFF',
     fontFamily: 'inter',
     fontSize: 24,
     fontStyle: 'normal',
     fontWeight: 700,
     lineHeight: 24,
-    alignSelf: 'flex-start',
  }
 })
