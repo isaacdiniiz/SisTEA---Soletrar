@@ -10,10 +10,10 @@ export default function App() {
  // Return the JSX for the App component
  return (
     <View style={styles.container}>
-      <Image source={imagecat} style={styles.image}/>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Soletrar</Text>
       </View>
+      <Image source={imagecat} style={styles.image}/>
     </View>
  );
 }
@@ -32,12 +32,16 @@ const styles = StyleSheet.create({
  },
  footer: {
   backgroundColor: 'rgba(73,	140,	255, 1)',
-  padding: 10,
-  marginTop: 20,
+  width: 360,
+  height: 60,
+  flexShrink: 0,
 },
  footerText: {
-  fontSize: 16, // Set the font size of the footer text
+  fontSize: 24, // Set the font size of the footer text
+  fontWeight: 'bold',
+  lineHeight: 80,
   color: 'white', // Set the color of the footer text
-  textAlign: 'center', // Center the footer text horizontally
+  alignSelf: 'flex-start',
+  marginLeft: 65 // Center the footer text horizontally
 },
 })
