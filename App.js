@@ -1,8 +1,8 @@
 
 // Import necessary components from React Native
-import { StyleSheet, View, Image, Text, Touchable, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 
-import { width, height, totalSize } from 'react-native-dimension';
+import { width, height } from 'react-native-dimension';
 // Import image from local assets
 import imagecat from './assets/cat.png';
 import botaoVoltar from './assets/botao_voltar.png'
@@ -25,7 +25,9 @@ export default function App() {
   <View style={styles.container}>
       
     <View style={styles.header}>
-      <Image source={botaoVoltar} style={styles.headerVoltar}/>
+      <TouchableOpacity>
+        <Image source={botaoVoltar} style={styles.headerVoltar}/>
+      </TouchableOpacity>
       <Text style={styles.headerText}>Soletrar</Text>
     </View>
 
@@ -42,36 +44,6 @@ export default function App() {
     </View>
 
     <View style={styles.keyboard}>
-      {tecla(0)}
-      {tecla(1)}
-      {tecla(2)}
-      {tecla(3)}
-      {tecla(4)}
-      {tecla(5)}
-      {tecla(6)}
-      {tecla(7)}
-      {tecla(8)}
-      {tecla(9)}
-      {tecla(10)}
-      {tecla(11)}
-      {tecla(12)}
-      {tecla(13)}
-      {tecla(14)}
-      {tecla(15)}
-      {tecla(16)}
-      {tecla(17)}
-      {tecla(18)}
-      {tecla(19)}
-      {tecla(20)}
-      {tecla(21)}
-      {tecla(22)}
-      {tecla(23)}
-      <View style={styles.invisibleBox}/>
-      {tecla(24)}
-      {tecla(25)}
-      <View style={styles.invisibleBox}>
-        <Image source={botaoReset} style={styles.botaoReset}/>
-      </View>
     </View>
     
   </View>
@@ -119,8 +91,8 @@ headerVoltar: {
   alignItems: 'center', // Center the content horizontally
 },
  image: {
-    width: 300, // Set the width of the image
-    height: 300, // Set the height of the imag >>>>>>> master
+    width: width(75), // Set the width of the image
+    height: width(75), // Set the height of the imag >>>>>>> master
     flexShrink: 0,
     marginLeft: 26,
     marginTop: height(2),
@@ -152,51 +124,5 @@ headerVoltar: {
   backgroundColor: 'rgba(200, 215, 225, 1)',
   width: 420,
   height: height(40),
-  flexDirection: 'row',
-  justifyContent: 'center', 
-  alignContent: 'space-around',
-  flexWrap: 'wrap',
-  padding: 10,
-},
-tecla:{
-  backgroundColor: 'white',
-  width: 56,
-  height: 56,
-  borderRadius: 10,
-  borderWidth: 2,
-  borderColor: 'rgba(52, 152, 219, 1)',
-  shadowColor: 'black',
-  shadowOpacity: 0.3,
-  shadowRadius: 2,
-  shadowOffset: {width: 0,height:4},
-  justifyContent: 'center', // Center the content vertically
-  alignItems: 'center', // Center the content horizontally
-  marginHorizontal: 5,
-},
-teclaLetra:{
-  fontFamily: "Helvetica",
-  fontWeight: 'bold',
-  color: 'rgba(19, 2, 87, 1)',
-  fontSize: 30,
-},
-botaoReset: {
-  width: 36, // Set the width of the image
-  height: 36, // Set the height of the image
-  backgroundColor: 'white',
-  flexShrink: 0,
-  borderRadius: 17,
-  borderWidth: 2,
-  borderColor: 'rgba(52, 152, 219, 1)',
-  shadowColor: 'black',
-  shadowOpacity: 0.3,
-  shadowRadius: 2,
-  shadowOffset: {width: 0,height:4},
-},
-invisibleBox: {
-  width: 56,
-  height: 56,
-  justifyContent: 'center', // Center the content vertically
-  alignItems: 'center', // Center the content horizontally
-  marginHorizontal: 5,
 }
 })
