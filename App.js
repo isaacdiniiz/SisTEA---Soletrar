@@ -3,7 +3,7 @@
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 
 import { width, height } from 'react-native-dimension';
-import Sound from 'react-native-sound';
+//import Sound from 'react-native-sound';
 // Import image from local assets
 import imagecat from './assets/cat.png';
 import botaoVoltar from './assets/botao_voltar.png'
@@ -20,7 +20,7 @@ function tecla(i){
   ) ;
 } ;
 
-const audioGato = './assets/mixkit-sweet-kitty-meow-93.wav'
+//const audioGato = './assets/mixkit-sweet-kitty-meow-93.wav'
 
 export default function App() {
 
@@ -183,7 +183,7 @@ tecla:{
   marginHorizontal: 5,
 },
 teclaLetra:{
-  fontFamily: "Helvetica",
+  //fontFamily: "helvetica",
   fontWeight: 'bold',
   color: 'rgba(19, 2, 87, 1)',
   fontSize: 30,
