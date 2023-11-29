@@ -19,9 +19,8 @@ function tecla(i){
   ) ;
 } ;
 
-// Define the main App component
 export default function App() {
- // Return the JSX for the App component
+
  return (
   <View style={styles.container}>
       
@@ -121,7 +120,7 @@ headerVoltar: {
 },
  image: {
     width: 300, // Set the width of the image
-    height: 300, // Set the height of the image
+    height: 300, // Set the height of the imag >>>>>>> master
     flexShrink: 0,
     marginLeft: 26,
     marginTop: height(2),
