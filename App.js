@@ -1,8 +1,6 @@
 
 // Import necessary components from React Native
 import { StyleSheet, View, Image, Text } from 'react-native';
-// eu usei npm install --save react-native-dimension para instalar a biblioteca
-import { width, height, totalSize } from 'react-native-dimension';
 
 import { width, height, totalSize } from 'react-native-dimension';
 // Import image from local assets
@@ -27,6 +25,10 @@ export default function App() {
     </View>
 
     <View style={styles.slots}>
+      <View style={styles.slotCell} />
+      <View style={styles.slotCell} />
+      <View style={styles.slotCell} />
+      <View style={styles.slotCell} />
     </View>
 
     <View style={styles.keyboard}>
@@ -77,10 +79,11 @@ headerVoltar: {
   alignItems: 'center', // Center the content horizontally
 },
  image: {
-    width: 267, // Set the width of the image
-    height: 267, // Set the height of the image
+    width: 300, // Set the width of the image
+    height: 300, // Set the height of the image
     flexShrink: 0,
     marginLeft: 26,
+    marginTop: height(2),
 },
  botaoSom: {
     width: 26, // Set the width of the image
@@ -91,6 +94,19 @@ headerVoltar: {
   backgroundColor: 'white',
   width: 420,
   height: height(10),
+  flexDirection: 'row',
+  justifyContent: 'center', // Center the content vertically
+  alignItems: 'center', // Center the content horizontally
+},
+ slotCell: {
+  backgroundColor: 'rgba(217, 217, 217, 1)',
+  width: 56,
+  height: 56,
+  borderTopLeftRadius: 10,
+  borderTopRightRadius: 10,
+  borderBottomWidth: 2,
+  borderColor: 'rgba(52, 152, 219, 1)',
+  marginHorizontal: 8,
 },
  keyboard: {
   backgroundColor: 'rgba(200, 215, 225, 1)',
