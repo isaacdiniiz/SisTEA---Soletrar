@@ -1,4 +1,3 @@
-import { StyleSheet, View, Image, Text} from 'react-native';
 
 // Import necessary components from React Native
 import { StyleSheet, View, Image, Text } from 'react-native';
