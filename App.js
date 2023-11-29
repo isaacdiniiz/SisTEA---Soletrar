@@ -33,7 +33,7 @@ export default function App() {
 
     <View style={styles.keyboard}>
     </View>
-
+    
   </View>
  );
 }
@@ -112,5 +112,6 @@ headerVoltar: {
   backgroundColor: 'rgba(200, 215, 225, 1)',
   width: 420,
   height: height(40),
-}
+},
+
 })
