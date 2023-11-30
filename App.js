@@ -80,7 +80,7 @@ export default function App() {
       {tecla(25)}
       <View style={styles.invisibleBox}>
         <TouchableOpacity>
-          <Image source={botaoReset} style={styles.botaoReset}/>
+         <Image source={botaoReset} style={styles.botaoReset}/>
         </TouchableOpacity>
       </View>
     </View>
