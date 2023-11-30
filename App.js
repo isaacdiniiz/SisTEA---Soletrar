@@ -1,6 +1,6 @@
 
 // Import necessary components from React Native
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, useWindowDimensions } from 'react-native';
 // eu usei npm install --save react-native-dimension para instalar a biblioteca
 import { width, height, totalSize } from 'react-native-dimension';
 
