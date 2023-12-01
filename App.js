@@ -54,10 +54,10 @@ export default function App() {
     </View>
 
     <View style={styles.slots}>
-      <View style={styles.slotCell} />
-      <View style={styles.slotCell} />
-      <View style={styles.slotCell} />
-      <View style={styles.slotCell} />
+      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot1}</Text></View>
+      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot2}</Text></View>
+      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot3}</Text></View>
+      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot4}</Text></View>
     </View>
 
     <View style={styles.keyboard}>
@@ -86,6 +86,7 @@ export default function App() {
       {tecla(22)}
       {tecla(23)}
       <View style={styles.invisibleBox}/>
+      <View style={styles.invisibleBox}/>
       {tecla(24)}
       {tecla(25)}
       <View style={styles.invisibleBox}>
@@ -93,6 +94,7 @@ export default function App() {
           <Image source={botaoReset} style={styles.botaoReset}/>
         </TouchableOpacity>
       </View>
+      <View style={styles.invisibleBox}/>
     </View>
     
   </View>
@@ -176,7 +178,7 @@ headerVoltar: {
   width: width(100),
   flex: 4,
   flexDirection: 'row',
-  justifyContent: 'center', 
+  justifyContent: 'space-around', 
   alignContent: 'space-around',
   flexWrap: 'wrap',
   padding: 10,
