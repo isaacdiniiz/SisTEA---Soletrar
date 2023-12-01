@@ -3,12 +3,13 @@
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 
 import { width, height } from 'react-native-dimension';
-//import Sound from 'react-native-sound';
-// Import image from local assets
+import Sound from 'react-native-sound';
+//import image from local assets
 import imagecat from './assets/cat.png';
 import botaoVoltar from './assets/botao_voltar.png'
 import botaoSom from './assets/botao_som.png'
 import botaoReset from './assets/botao_reset.png'
+//import catSound from './assets/mixkit-sweet-kitty-meow-93.wav'
 
 function tecla(i){
   return (
@@ -20,7 +21,11 @@ function tecla(i){
   ) ;
 } ;
 
-//const audioGato = './assets/mixkit-sweet-kitty-meow-93.wav'
+const cat = new Sound('mixkit-sweet-kitty-meow-93.wav', Sound.MAIN_BUNDLE);
+const playSound = () => {
+  cat.play();
+};
+
 
 export default function App() {
 
@@ -36,7 +41,7 @@ export default function App() {
 
     <View style={styles.mid}>
       <Image source={imagecat} style={styles.image}/>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={playSound}>
         <Image source={botaoSom} style={styles.botaoSom}/>
       </TouchableOpacity>
     </View>
