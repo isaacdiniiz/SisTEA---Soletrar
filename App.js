@@ -54,10 +54,10 @@ export default function App() {
     </View>
 
     <View style={styles.slots}>
-      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot1}</Text></View>
-      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot2}</Text></View>
-      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot3}</Text></View>
-      <View style={styles.slotCell}><Text style={styles.slotLetra}>{slot4}</Text></View>
+      <View style={styles.slotCell}></View>
+      <View style={styles.slotCell}></View>
+      <View style={styles.slotCell}></View>
+      <View style={styles.slotCell}></View>
     </View>
 
     <View style={styles.keyboard}>
