@@ -1,15 +1,13 @@
 
 // Import necessary components from React Native
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
-
+import * as React from 'react';
 import { width, height } from 'react-native-dimension';
-import Sound from 'react-native-sound';
-//import image from local assets
+import { Audio } from 'expo-av';
 import imagecat from './assets/cat.png';
 import botaoVoltar from './assets/botao_voltar.png'
 import botaoSom from './assets/botao_som.png'
 import botaoReset from './assets/botao_reset.png'
-//import catSound from './assets/mixkit-sweet-kitty-meow-93.wav'
 
 function tecla(i){
   return (
@@ -21,17 +19,26 @@ function tecla(i){
   ) ;
 } ;
 
-const cat = new Sound('mixkit-sweet-kitty-meow-93.wav', Sound.MAIN_BUNDLE);
-const playSound = () => {
-  cat.play();
-};
-
-
 export default function App() {
 
+  const[sound, setSound] = React.useState();
+
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync( require('./assets/sounds/kittySound.wav'));
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+        sound.unloadAsync();
+      }
+      : undefined;
+  }, [sound]);
+  
  return (
   <View style={styles.container}>
-      
     <View style={styles.header}>
       <TouchableOpacity>
         <Image source={botaoVoltar} style={styles.headerVoltar}/>
@@ -93,6 +100,7 @@ export default function App() {
 }
 
 alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
 
 // Define the styles for the App component
 const styles = StyleSheet.create({
