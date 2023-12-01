@@ -96,7 +96,7 @@ export default function App() {
     </View>
     
   </View>
- );
+  );
 }
 
 alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -107,18 +107,19 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center', // Center the content vertically
     alignItems: 'center', // Center the content horizontally
+    flex:1,
  },
  header: {
   backgroundColor: 'rgba(73,	94,	136, 1)',
   width: width(100),
-  height: height(10),
+  flex: 1,
   flexShrink: 0,
   flexDirection: 'row'
 },
 headerVoltar: {
  marginTop: height(5.25),
- height: 26,
- width: 26,
+ height: width(5.8),
+ width: width(5.8),
  alignSelf: 'flex-start',
  marginLeft: width(5),// Center the footer text horizontally
 },
@@ -134,7 +135,7 @@ headerVoltar: {
  mid: {
   backgroundColor: 'white',
   width: width(100),
-  height: height(40),
+  flex: 4,
   flexShrink: 0,
   flexDirection: 'row',
   justifyContent: 'center', // Center the content vertically
@@ -148,22 +149,22 @@ headerVoltar: {
     marginTop: height(2),
 },
  botaoSom: {
-    width: 26, // Set the width of the image
-    height: 26, // Set the height of the image
+    width: width(5.8), // Set the width of the image
+    height: width(5.8), // Set the height of the image
     flexShrink: 0,
 },
  slots: {
   backgroundColor: 'white',
-  width: 420,
-  height: height(10),
+  width: width(100),
+  flex: 1,
   flexDirection: 'row',
   justifyContent: 'center', // Center the content vertically
   alignItems: 'center', // Center the content horizontally
 },
  slotCell: {
   backgroundColor: 'rgba(217, 217, 217, 1)',
-  width: 56,
-  height: 56,
+  width: width(14),
+  height: width(14),
   borderTopLeftRadius: 10,
   borderTopRightRadius: 10,
   borderBottomWidth: 2,
@@ -172,8 +173,8 @@ headerVoltar: {
 },
  keyboard: {
   backgroundColor: 'rgba(200, 215, 225, 1)',
-  width: 420,
-  height: height(40),
+  width: width(100),
+  flex: 4,
   flexDirection: 'row',
   justifyContent: 'center', 
   alignContent: 'space-around',
@@ -182,8 +183,8 @@ headerVoltar: {
 },
 tecla:{
   backgroundColor: 'white',
-  width: 56,
-  height: 56,
+  width: width(12.5),
+  height: width(12.5),
   borderRadius: 10,
   borderWidth: 2,
   borderColor: 'rgba(52, 152, 219, 1)',
@@ -215,10 +216,10 @@ botaoReset: {
   shadowOffset: {width: 0,height:4},
 },
 invisibleBox: {
-  width: 56,
-  height: 56,
+  width: width(12.5),
+  height: width(12.5),
   justifyContent: 'center', // Center the content vertically
   alignItems: 'center', // Center the content horizontally
   marginHorizontal: 5,
-}
+},
 })
