@@ -33,6 +33,7 @@ export default function App() {
     return sound
       ? () => {
         sound.unloadAsync();
+        Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
       }
       : undefined;
   }, [sound]);
@@ -146,13 +147,12 @@ headerVoltar: {
  image: {
     width: width(75), // Set the width of the image
     height: width(75), // Set the height of the imag >>>>>>> master
-    flexShrink: 0,
-    marginLeft: 26,
-    marginTop: height(2),
+    marginLeft: width(8),
+    marginTop: height(3.3),
 },
  botaoSom: {
-    width: width(5.8), // Set the width of the image
-    height: width(5.8), // Set the height of the image
+    width: width(8.5), // Set the width of the image
+    height: width(8.5), // Set the height of the image
     flexShrink: 0,
 },
  slots: {
@@ -190,6 +190,7 @@ tecla:{
   borderRadius: 10,
   borderWidth: 2,
   borderColor: 'rgba(52, 152, 219, 1)',
+  elevation: 10,
   shadowColor: 'black',
   shadowOpacity: 0.3,
   shadowRadius: 2,
@@ -199,7 +200,6 @@ tecla:{
   marginHorizontal: 5,
 },
 teclaLetra:{
-  //fontFamily: "helvetica",
   fontWeight: 'bold',
   color: 'rgba(19, 2, 87, 1)',
   fontSize: 30,
