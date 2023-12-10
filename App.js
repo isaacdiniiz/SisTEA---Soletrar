@@ -196,7 +196,7 @@ headerVoltar: {
   fontWeight: '800',
   color: 'rgba(19, 2, 87, 1)',
   fontSize: 35,
-  marginLeft: 15,
+  textAlign: 'center',
 },
 
  keyboard: {
