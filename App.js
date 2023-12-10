@@ -54,7 +54,7 @@ export default function App() {
     } else if(slot2_vazio){
       setSlot2(slot2[0] = alfabeto[i])
       setVazio2(false)
-    } else{
+    } else if(slot3_vazio){
       setSlot3(slot3[0] = alfabeto[i])
       setVazio3(false)
     }
