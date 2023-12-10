@@ -34,13 +34,34 @@ export default function App() {
       : undefined;
   }, [sound]);
 
-  const [counter, setCounter] = useState(0)
-  const[letras, setLetras] = useState([])
+  const [counter, setCounter] = React.useState(0)
+
+  const [slot0, setSlot0] = useState([])
+  const [slot1, setSlot1] = useState([])
+  const [slot2, setSlot2] = useState([])
+  const [slot3, setSlot3] = useState([])
+
+  const[slot0_vazio, setVazio0] = useState(true)
+  const[slot1_vazio, setVazio1] = useState(true)
+  const[slot2_vazio, setVazio2] = useState(true)
+  const[slot3_vazio, setVazio3] = useState(true)
+
   const clickLetra = (i) => {
-    setLetras(letras[counter] = alfabeto[i])
-    setCounter(counter + 1)
-    console.log(counter)
+    if(slot0_vazio){
+      setSlot0(slot0[0] = alfabeto[i])
+      setVazio0(false)
+    } else if(slot1_vazio){
+      setSlot1(slot1[0] = alfabeto[i])
+      setVazio1(false)
+    } else if(slot2_vazio){
+      setSlot2(slot2[0] = alfabeto[i])
+      setVazio2(false)
+    } else{
+      setSlot3(slot3[0] = alfabeto[i])
+      setVazio3(false)
+    }
   }
+
 
   function tecla(i){
     return (
@@ -70,16 +91,16 @@ export default function App() {
 
     <View style={styles.slots}>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{letras[0]}</Text>
+        <Text style={styles.teclaSlot}>{slot0[0]}</Text>
       </View>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{letras[1]}</Text>
+        <Text style={styles.teclaSlot}>{slot1[0]}</Text>
       </View>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{letras[2]}</Text>
+        <Text style={styles.teclaSlot}>{slot2[0]}</Text>
       </View>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{letras[3]}</Text>
+        <Text style={styles.teclaSlot}>{slot3[0]}</Text>
       </View>
     </View>
 
@@ -229,6 +250,7 @@ teclaLetra:{
   fontWeight: 'bold',
   color: 'rgba(19, 2, 87, 1)',
   fontSize: 30,
+  textAlign: 'center',
 },
 botaoReset: {
   width: 36, // Set the width of the image
