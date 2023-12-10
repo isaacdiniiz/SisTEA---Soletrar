@@ -36,15 +36,15 @@ export default function App() {
 
   const [counter, setCounter] = useState(0)
   const[letras, setLetras] = useState([])
-  const clickLetra = () => {
-    setLetras(letras[counter] = alfabeto[0])
+  const clickLetra = (i) => {
+    setLetras(letras[counter] = alfabeto[i])
     setCounter(counter + 1)
     console.log(counter)
   }
 
   function tecla(i){
     return (
-      <TouchableOpacity onPress={clickLetra}>
+      <TouchableOpacity onPress={() => clickLetra(i)}>
         <View style={styles.tecla}>
           <Text style={styles.teclaLetra}>{alfabeto[i]}</Text>
         </View>
