@@ -2,22 +2,18 @@
 // Import necessary components from React Native
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import * as React from 'react';
+import { useState } from 'react';
 import { width, height } from 'react-native-dimension';
 import { Audio } from 'expo-av';
 import imagecat from './assets/cat.png';
 import botaoVoltar from './assets/botao_voltar.png'
 import botaoSom from './assets/botao_som.png'
 import botaoReset from './assets/botao_reset.png'
+import { Button } from 'react-native-web';
 
-function tecla(i){
-  return (
-    <TouchableOpacity>
-      <View style={styles.tecla}>
-        <Text style={styles.teclaLetra}>{alfabeto[i]}</Text>
-      </View>
-    </TouchableOpacity>
-  ) ;
-} ;
+alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+ 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+  'U', 'V', 'W', 'X', 'Y', 'Z']
 
 export default function App() {
 
@@ -37,6 +33,24 @@ export default function App() {
       }
       : undefined;
   }, [sound]);
+
+  const [counter, setCounter] = useState(0)
+  const[letras, setLetras] = useState([])
+  const clickLetra = () => {
+    setLetras(letras[counter] = alfabeto[0])
+    setCounter(counter + 1)
+    console.log(counter)
+  }
+
+  function tecla(i){
+    return (
+      <TouchableOpacity onPress={clickLetra}>
+        <View style={styles.tecla}>
+          <Text style={styles.teclaLetra}>{alfabeto[i]}</Text>
+        </View>
+      </TouchableOpacity>
+    ) ;
+  } ;
   
  return (
   <View style={styles.container}>
@@ -55,10 +69,18 @@ export default function App() {
     </View>
 
     <View style={styles.slots}>
-      <View style={styles.slotCell}></View>
-      <View style={styles.slotCell}></View>
-      <View style={styles.slotCell}></View>
-      <View style={styles.slotCell}></View>
+      <View style={styles.slotCell}>
+        <Text style={styles.teclaSlot}>{letras[0]}</Text>
+      </View>
+      <View style={styles.slotCell}>
+        <Text style={styles.teclaSlot}>{letras[1]}</Text>
+      </View>
+      <View style={styles.slotCell}>
+        <Text style={styles.teclaSlot}>{letras[2]}</Text>
+      </View>
+      <View style={styles.slotCell}>
+        <Text style={styles.teclaSlot}>{letras[3]}</Text>
+      </View>
     </View>
 
     <View style={styles.keyboard}>
@@ -101,9 +123,6 @@ export default function App() {
   </View>
   );
 }
-
-alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
 
 // Define the styles for the App component
 const styles = StyleSheet.create({
@@ -173,6 +192,13 @@ headerVoltar: {
   borderColor: 'rgba(52, 152, 219, 1)',
   marginHorizontal: 8,
 },
+  teclaSlot: {
+  fontWeight: '800',
+  color: 'rgba(19, 2, 87, 1)',
+  fontSize: 35,
+  marginLeft: 15,
+},
+
  keyboard: {
   backgroundColor: 'rgba(200, 215, 225, 1)',
   width: width(100),
