@@ -34,8 +34,6 @@ export default function App() {
       : undefined;
   }, [sound]);
 
-  const [counter, setCounter] = React.useState(0)
-
   const [slot0, setSlot0] = useState([])
   const [slot1, setSlot1] = useState([])
   const [slot2, setSlot2] = useState([])
