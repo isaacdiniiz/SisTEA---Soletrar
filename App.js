@@ -1,6 +1,6 @@
 
 // Import necessary components from React Native
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity, Alert } from 'react-native';
 import * as React from 'react';
 import { useState } from 'react';
 import { width, height } from 'react-native-dimension';
@@ -34,32 +34,61 @@ export default function App() {
       : undefined;
   }, [sound]);
 
-  const [slot0, setSlot0] = useState([])
-  const [slot1, setSlot1] = useState([])
-  const [slot2, setSlot2] = useState([])
-  const [slot3, setSlot3] = useState([])
+  var [slot0, setSlot0] = useState("")
+  var [slot1, setSlot1] = useState("")
+  var [slot2, setSlot2] = useState("")
+  var [slot3, setSlot3] = useState("")
 
   const[slot0_vazio, setVazio0] = useState(true)
   const[slot1_vazio, setVazio1] = useState(true)
   const[slot2_vazio, setVazio2] = useState(true)
   const[slot3_vazio, setVazio3] = useState(true)
+  const[completo, setCompleto] = useState(false)
 
   const clickLetra = (i) => {
     if(slot0_vazio){
-      setSlot0(slot0[0] = alfabeto[i])
+      setSlot0(slot0 = alfabeto[i])
       setVazio0(false)
     } else if(slot1_vazio){
-      setSlot1(slot1[0] = alfabeto[i])
+      setSlot1(slot1 = alfabeto[i])
       setVazio1(false)
     } else if(slot2_vazio){
-      setSlot2(slot2[0] = alfabeto[i])
+      setSlot2(slot2 = alfabeto[i])
       setVazio2(false)
     } else if(slot3_vazio){
-      setSlot3(slot3[0] = alfabeto[i])
+      setSlot3(slot3 = alfabeto[i])
       setVazio3(false)
+      setCompleto(true)
     }
   }
 
+  const clear = () => {
+    setSlot0(slot0 = "")
+    setSlot1(slot1 = "")
+    setSlot2(slot2 = "")
+    setSlot3(slot3 = "")
+    setVazio0(true)
+    setVazio1(true)
+    setVazio2(true)
+    setVazio3(true)
+    setCompleto(false)
+  }
+
+  var tentativa = slot0+slot1+slot2+slot3
+  const resposta = 'GATO'
+  const check = () => {
+    console.log(tentativa + " " + resposta)
+    if(tentativa == resposta){
+      playSound()
+      Alert.alert('Parabéns!','A resposta correta era '+resposta)
+    }else{
+      clear()
+    }
+  }
+  if(completo) {
+    check()
+    clear()
+  }
 
   function tecla(i){
     return (
@@ -89,16 +118,16 @@ export default function App() {
 
     <View style={styles.slots}>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{slot0[0]}</Text>
+        <Text style={styles.teclaSlot}>{slot0}</Text>
       </View>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{slot1[0]}</Text>
+        <Text style={styles.teclaSlot}>{slot1}</Text>
       </View>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{slot2[0]}</Text>
+        <Text style={styles.teclaSlot}>{slot2}</Text>
       </View>
       <View style={styles.slotCell}>
-        <Text style={styles.teclaSlot}>{slot3[0]}</Text>
+        <Text style={styles.teclaSlot}>{slot3}</Text>
       </View>
     </View>
 
@@ -132,7 +161,7 @@ export default function App() {
       {tecla(24)}
       {tecla(25)}
       <View style={styles.invisibleBox}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={clear}>
           <Image source={botaoReset} style={styles.botaoReset}/>
         </TouchableOpacity>
       </View>
@@ -210,6 +239,8 @@ headerVoltar: {
   borderBottomWidth: 2,
   borderColor: 'rgba(52, 152, 219, 1)',
   marginHorizontal: 8,
+  justifyContent: 'center', // Center the content vertically
+  alignItems: 'center', // Center the content horizontall 
 },
   teclaSlot: {
   fontWeight: '800',
