@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { width, height } from 'react-native-dimension';
 import { Audio } from 'expo-av';
 import imagecat from './assets/cat.png';
+import imagepato from './assets/pato.png';
 import botaoVoltar from './assets/botao_voltar.png'
 import botaoSom from './assets/botao_som.png'
 import botaoReset from './assets/botao_reset.png'
@@ -93,19 +94,23 @@ export default function App() {
     setCompleto(false)
   }
 
+  //Variável que determina o nível
+  var [n, setNivel] = useState(0);
+  
   // Ativa/desativa o alert de acerto
   const [showAlert, setShowAlert] = useState(false)
-  const resposta = 'GATO'
-  var mensagemAcerto = 'A resposta era '+resposta;
+
+  // Lista dos níveis e mensagem para o acerto
+  const resposta = ['GATO', 'PATO']
+  const image = [imagecat, imagepato]
+  var mensagemAcerto = 'A resposta era '+resposta[n];
 
   //Função para checagem da tentativa do usuário
   var tentativa = slot0+slot1+slot2+slot3
   const check = () => {
-    console.log(tentativa + " " + resposta)
-    if(tentativa == resposta){
+    if(tentativa == resposta[n]){
       playSound2()
       setShowAlert(true)
-      //Alert.alert('Parabéns!','A resposta correta era '+resposta)
     }else{
       clear()
     }
@@ -129,12 +134,12 @@ export default function App() {
       </TouchableOpacity>
     ) ;
   } ;
-  
+  console.log(n)
  return (
   <View style={styles.container}>
     <AwesomeAlert show={showAlert} contentContainerStyle={styles.alert} title="Parabéns!" titleStyle={styles.alertTitle} message={mensagemAcerto} 
     messageStyle={styles.alertMsg} showConfirmButton={true} confirmButtonStyle={styles.alertButton} confirmText='Próximo nível' confirmButtonTextStyle={styles.alertButtonTxt}
-    closeOnTouchOutside={false}/>
+    closeOnTouchOutside={false} onConfirmPressed={() => {setNivel(n+1); setShowAlert(false)}}/>
     <View style={styles.header}>
       <TouchableOpacity>
         <Image source={botaoVoltar} style={styles.headerVoltar}/>
@@ -143,7 +148,7 @@ export default function App() {
     </View>
 
     <View style={styles.mid}>
-      <Image source={imagecat} style={styles.image}/>
+      <Image source={image[n]} style={styles.image}/>
       <TouchableOpacity onPress={playSound}>
         <Image source={botaoSom} style={styles.botaoSom}/>
       </TouchableOpacity>
