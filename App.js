@@ -9,7 +9,7 @@ import imagecat from './assets/cat.png';
 import botaoVoltar from './assets/botao_voltar.png'
 import botaoSom from './assets/botao_som.png'
 import botaoReset from './assets/botao_reset.png'
-import { Button } from 'react-native-web';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
  'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
@@ -21,6 +21,7 @@ export default function App() {
   const[sound2, setSound2] = React.useState();
 
   async function playSound() {
+    await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
     const { sound } = await Audio.Sound.createAsync( require('./assets/sounds/kittySound.wav'));
     setSound(sound);
     await sound.playAsync();
@@ -61,6 +62,7 @@ export default function App() {
   const[slot3_vazio, setVazio3] = useState(true)
   const[completo, setCompleto] = useState(false)
 
+  // Função que muda slot em que a letra vai aparecer e confere se slot i está vazio ou ocupado
   const clickLetra = (i) => {
     if(slot0_vazio){
       setSlot0(slot0 = alfabeto[i])
@@ -78,6 +80,7 @@ export default function App() {
     }
   }
 
+// Função que limpa os slots (em caso de erro ou reset)
   const clear = () => {
     setSlot0(slot0 = "")
     setSlot1(slot1 = "")
@@ -90,13 +93,19 @@ export default function App() {
     setCompleto(false)
   }
 
-  var tentativa = slot0+slot1+slot2+slot3
+  // Ativa/desativa o alert de acerto
+  const [showAlert, setShowAlert] = useState(false)
   const resposta = 'GATO'
+  var mensagemAcerto = 'A resposta era '+resposta;
+
+  //Função para checagem da tentativa do usuário
+  var tentativa = slot0+slot1+slot2+slot3
   const check = () => {
     console.log(tentativa + " " + resposta)
     if(tentativa == resposta){
       playSound2()
-      Alert.alert('Parabéns!','A resposta correta era '+resposta)
+      setShowAlert(true)
+      //Alert.alert('Parabéns!','A resposta correta era '+resposta)
     }else{
       clear()
     }
@@ -110,6 +119,7 @@ export default function App() {
     }, 300)
   })
  
+  // Função que cria as teclas do teclado
   function tecla(i){
     return (
       <TouchableOpacity onPress={() => clickLetra(i)}>
@@ -122,6 +132,9 @@ export default function App() {
   
  return (
   <View style={styles.container}>
+    <AwesomeAlert show={showAlert} contentContainerStyle={styles.alert} title="Parabéns!" titleStyle={styles.alertTitle} message={mensagemAcerto} 
+    messageStyle={styles.alertMsg} showConfirmButton={true} confirmButtonStyle={styles.alertButton} confirmText='Próximo nível' confirmButtonTextStyle={styles.alertButtonTxt}
+    closeOnTouchOutside={false}/>
     <View style={styles.header}>
       <TouchableOpacity>
         <Image source={botaoVoltar} style={styles.headerVoltar}/>
@@ -234,12 +247,12 @@ headerVoltar: {
  image: {
     width: width(75), // Set the width of the image
     height: width(75), // Set the height of the imag >>>>>>> master
-    marginLeft: width(8),
+    marginLeft: width(7),
     marginTop: height(3.3),
 },
  botaoSom: {
-    width: width(8.5), // Set the width of the image
-    height: width(8.5), // Set the height of the image
+    width: width(7), // Set the width of the image
+    height: width(7), // Set the height of the image
     flexShrink: 0,
 },
  slots: {
@@ -268,7 +281,6 @@ headerVoltar: {
   fontSize: 35,
   textAlign: 'center',
 },
-
  keyboard: {
   backgroundColor: 'rgba(200, 215, 225, 1)',
   width: width(100),
@@ -302,8 +314,8 @@ teclaLetra:{
   textAlign: 'center',
 },
 botaoReset: {
-  width: 36, // Set the width of the image
-  height: 36, // Set the height of the image
+  width: width(8.5), // Set the width of the image
+  height: width(8.5), // Set the height of the image
   backgroundColor: 'white',
   flexShrink: 0,
   borderRadius: 17,
@@ -322,8 +334,36 @@ invisibleBox: {
   marginHorizontal: 5,
 },
 alert: {
-  backgroundColor: 'red',
-  borderColor: 'blue',
+  width: width(80),
+  height: height(20),
+  backgroundColor: 'white',
+  borderColor: 'rgba(52, 152, 219, 1)',
   borderWidth: 2,
+  borderRadius: 14
 },
+alertTitle: {
+  fontWeight: 'bold',
+  color: 'rgba(19, 2, 87, 1)',
+  fontSize: 30,
+  textAlign: 'center',
+},
+alertMsg: {
+  fontWeight: 'bold',
+  color: 'rgba(52, 152, 219, 1)',
+  fontSize: 20,
+  textAlign: 'center',
+},
+alertButton: {
+  width: width(50),
+  backgroundColor: 'rgba(73,	94,	136, 1)',
+  borderColor: 'rgba(52, 152, 219, 1)',
+  borderRadius: 10,
+},
+alertButtonTxt: {
+  fontWeight: 'bold',
+  color: 'white',
+  fontSize: 20,
+  textAlign: 'center',
+}
+
 })
