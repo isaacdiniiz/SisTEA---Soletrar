@@ -18,11 +18,17 @@ alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
 export default function App() {
 
   const[sound, setSound] = React.useState();
+  const[soundTwo, setSoundTwo] = useState(null);
 
   async function playSound() {
     const { sound } = await Audio.Sound.createAsync( require('./assets/sounds/kittySound.wav'));
     setSound(sound);
     await sound.playAsync();
+  }
+  async function playSoundTwo() {
+    const { soundTwo } = await Audio.Sound.createAsync(require('./assets/sounds/plim.wav'));
+    setSoundTwo(soundTwo);
+    await soundTwo.playAsync();
   }
 
   React.useEffect(() => {
@@ -79,7 +85,7 @@ export default function App() {
   const check = () => {
     console.log(tentativa + " " + resposta)
     if(tentativa == resposta){
-      playSound()
+      playSoundTwo()
       Alert.alert('Parabéns!','A resposta correta era '+resposta)
     }else{
       clear()
@@ -300,5 +306,10 @@ invisibleBox: {
   justifyContent: 'center', // Center the content vertically
   alignItems: 'center', // Center the content horizontally
   marginHorizontal: 5,
+},
+alert: {
+  backgroundColor: 'red',
+  borderColor: 'blue',
+  borderWidth: 2,
 },
 })
