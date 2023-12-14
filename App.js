@@ -7,6 +7,11 @@ import { width, height } from 'react-native-dimension';
 import { Audio } from 'expo-av';
 import imagecat from './assets/cat.png';
 import imagepato from './assets/pato.png';
+import imageurso from './assets/urso.png';
+import imagelobo from './assets/lobo.png';
+import imagegalo from './assets/galo.png';
+import imagevaca from './assets/vaca.png';
+import imagebode from './assets/bode.png';
 import botaoVoltar from './assets/botao_voltar.png'
 import botaoSom from './assets/botao_som.png'
 import botaoReset from './assets/botao_reset.png'
@@ -101,8 +106,8 @@ export default function App() {
   const [showAlert, setShowAlert] = useState(false)
 
   // Lista dos níveis e mensagem para o acerto
-  const resposta = ['GATO', 'PATO']
-  const image = [imagecat, imagepato]
+  const resposta = ['GATO', 'PATO', 'URSO', 'GALO', 'LOBO', 'VACA', 'BODE']
+  const image = [imagecat, imagepato, imageurso, imagegalo, imagelobo, imagevaca, imagebode]
   var mensagemAcerto = 'A resposta era '+resposta[n];
 
   //Função para checagem da tentativa do usuário
@@ -252,6 +257,7 @@ headerVoltar: {
  image: {
     width: width(75), // Set the width of the image
     height: width(75), // Set the height of the imag >>>>>>> master
+    objectFit: 'contain',
     marginLeft: width(7),
     marginTop: height(3.3),
 },
