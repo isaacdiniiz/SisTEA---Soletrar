@@ -18,19 +18,21 @@ alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
 export default function App() {
 
   const[sound, setSound] = React.useState();
-  const[soundTwo, setSoundTwo] = useState(null);
+  const[sound2, setSound2] = React.useState();
 
   async function playSound() {
     const { sound } = await Audio.Sound.createAsync( require('./assets/sounds/kittySound.wav'));
     setSound(sound);
     await sound.playAsync();
   }
-  async function playSoundTwo() {
-    const { soundTwo } = await Audio.Sound.createAsync(require('./assets/sounds/plim.wav'));
-    setSoundTwo(soundTwo);
-    await soundTwo.playAsync();
-  }
-
+  async function playSound2() {
+    await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+    const { sound: loadedSound2 } = await Audio.Sound.createAsync(
+      require('./assets/sounds/plim.wav')
+    );
+     setSound2(loadedSound2);
+    await loadedSound2.playAsync();
+ }
   React.useEffect(() => {
     return sound
       ? () => {
@@ -39,6 +41,14 @@ export default function App() {
       }
       : undefined;
   }, [sound]);
+  React.useEffect(() => {
+    return sound2
+      ? () => {
+          sound2.unloadAsync();
+          Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+        }
+      : undefined;
+ }, [sound2]);
 
   var [slot0, setSlot0] = useState("")
   var [slot1, setSlot1] = useState("")
@@ -85,17 +95,21 @@ export default function App() {
   const check = () => {
     console.log(tentativa + " " + resposta)
     if(tentativa == resposta){
-      playSoundTwo()
+      playSound2()
       Alert.alert('Parabéns!','A resposta correta era '+resposta)
     }else{
       clear()
     }
   }
-  if(completo) {
-    check()
-    clear()
-  }
-
+  React.useEffect(() => {
+    setTimeout(() => {
+      if(completo) {
+        check()
+        clear()
+      }
+    }, 300)
+  })
+ 
   function tecla(i){
     return (
       <TouchableOpacity onPress={() => clickLetra(i)}>
